@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::get('/counter', Counter::class);
 
+Route::view('/users', 'users.index');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
