@@ -5,13 +5,16 @@ namespace App\Livewire;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\Attributes\Url;
 
 class UserDatatable extends Component
 {
     use WithPagination;
 
+    #[Url(as: 'q')]
     public string $search = '';
 
+    #[Url]
     public int $perPage = 10;
 
     public function render()
