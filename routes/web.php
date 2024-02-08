@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Counter;
+use App\Livewire\Forms\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('/counter', Counter::class);
-
+Route::get('/new-user', User::class);
 Route::view('/users', 'users.index');
 
 Route::middleware([
