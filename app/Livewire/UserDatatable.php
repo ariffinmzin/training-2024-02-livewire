@@ -27,4 +27,13 @@ class UserDatatable extends Component
                 ),
         ]);
     }
+
+    public function removeUser($id)
+    {
+        if(auth()->user()->id == $id) {
+            return;
+        }
+
+        User::where('id', $id)->delete();
+    }
 }

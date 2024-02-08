@@ -59,11 +59,13 @@
                                 <x-button>
                                     Update
                                 </x-button>
-                                <x-button
-                                    onclick="confirm('Are you sure want to delete {{ $user->name }} ?') || event.stopImmediatePropagation()"
-                                    wire:click="removeUser({{ $user->id }})" class="bg-red-700 mx-2">
-                                    Delete
-                                </x-button>
+                                @if (auth()->user()->id != $user->id)
+                                    <x-button
+                                        onclick="confirm('Are you sure want to delete {{ $user->name }} ?') || event.stopImmediatePropagation()"
+                                        wire:click="removeUser({{ $user->id }})" class="bg-red-700 mx-2">
+                                        Delete
+                                    </x-button>
+                                @endif
                             </td>
                         </tr>
                     @empty
