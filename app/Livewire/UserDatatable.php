@@ -10,10 +10,17 @@ class UserDatatable extends Component
 {
     use WithPagination;
 
+    public string $search = '';
+
     public function render()
     {
         return view('livewire.user-datatable', [
-            'users' => User::paginate(),
+            'users' => User::query()
+                ->when(
+                    strlen($this->search) > 3,
+                    fn($query) => $query->search($this->search)
+                )
+                ->paginate(),
         ]);
     }
 }
