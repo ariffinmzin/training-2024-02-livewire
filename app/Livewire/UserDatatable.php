@@ -12,6 +12,8 @@ class UserDatatable extends Component
 
     public string $search = '';
 
+    public int $perPage = 10;
+
     public function render()
     {
         return view('livewire.user-datatable', [
@@ -20,7 +22,9 @@ class UserDatatable extends Component
                     strlen($this->search) > 3,
                     fn($query) => $query->search($this->search)
                 )
-                ->paginate(),
+                ->paginate(
+                    $this->perPage
+                ),
         ]);
     }
 }
